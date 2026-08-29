@@ -53,10 +53,10 @@ export const metadata: Metadata = {
     siteName: "One For The World UW-Madison",
     images: [
       {
-        url: "/images/Primary-Logo.jpg",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "One for the World UW-Madison Logo",
+        alt: "One for the World UW-Madison",
       },
     ],
     type: "website",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "One For The World UW-Madison",
     description:
       "Join One for the World at UW-Madison! We educate students on effective global aid and the 1% pledge while building a community of future leaders.",
-    images: ["/images/Primary-Logo.jpg"],
+    images: ["/images/og-image.png"],
   },
 };
 
