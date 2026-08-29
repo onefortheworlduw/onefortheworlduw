@@ -8,8 +8,8 @@ export default function HomePage() {
       <section className="relative min-h-[65vh] flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-45">
           <Image
-            src="/images/homepage-image.webp"
-            alt="UW-Madison students"
+            src="/images/seth-doyle-zf9_yiAekJs-unsplash.webp"
+            alt="Children in need of global aid"
             fill
             priority
             sizes="100vw"
@@ -104,11 +104,11 @@ export default function HomePage() {
             </div>
             <div className="relative h-[380px] sm:h-[450px] rounded-2xl overflow-hidden shadow-2xl border border-neutral-100">
               <Image
-                src="/images/seth-doyle-zf9_yiAekJs-unsplash.webp"
-                alt="Children in need of global aid"
+                src="/images/homepage-image.webp"
+                alt="UW-Madison students"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                quality={80}
+                quality={85}
                 className="object-cover"
               />
             </div>
