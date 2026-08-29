@@ -116,7 +116,7 @@ export default function InvolvePage() {
               fulfilling your pledge once you start your post-graduation career.
             </p>
             <a
-              href="https://1fortheworld.donational.org/take-the-pledge"
+              href="https://1fortheworld.donational.org/oftw-uw-madison/choose-pledge"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#2675F8] font-bold text-sm underline hover:text-black"

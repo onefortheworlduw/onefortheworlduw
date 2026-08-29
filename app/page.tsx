@@ -32,7 +32,7 @@ export default function HomePage() {
               <span>Get Involved</span>
             </Link>
             <a
-              href="https://1fortheworld.donational.org/take-the-pledge"
+              href="https://1fortheworld.donational.org/oftw-uw-madison/choose-pledge"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary"
