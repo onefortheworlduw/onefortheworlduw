@@ -69,7 +69,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <div className="relative w-10 h-10 flex-shrink-0 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/primary-logo.png"
+                  src="/images/primary-logo.webp"
                   alt="One for the World Logo"
                   fill
                   sizes="40px"

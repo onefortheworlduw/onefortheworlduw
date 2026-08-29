@@ -34,7 +34,7 @@ export default function Navbar() {
         >
           <div className="relative w-11 h-11 flex-shrink-0 rounded-lg overflow-hidden">
             <Image
-              src="/images/primary-logo.png"
+              src="/images/primary-logo.webp"
               alt="One for the World Logo"
               fill
               sizes="44px"
