@@ -80,15 +80,28 @@ export default async function TeamPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Header Banner */}
-      <section className="bg-black text-white py-16 px-4 sm:px-6 lg:px-8 text-center border-b border-neutral-800">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative min-h-[45vh] flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 bg-black overflow-hidden border-b border-neutral-800">
+        <div className="absolute inset-0 z-0 opacity-40">
+          <Image
+            src="/images/brooke-cagle--uHVRvDr7pg-unsplash.webp"
+            alt="One for the World UW Team"
+            fill
+            priority
+            sizes="100vw"
+            quality={80}
+            className="object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/70 z-10" />
+
+        <div className="relative z-20 max-w-4xl mx-auto py-16">
           <span className="text-[#2675F8] font-bold text-xs uppercase tracking-widest block mb-2">
             Chapter Leadership
           </span>
-          <h1 className="font-heading text-5xl sm:text-7xl uppercase tracking-wide">
+          <h1 className="font-heading text-5xl sm:text-7xl uppercase tracking-wide text-white">
             OUR TEAM
           </h1>
-          <p className="text-neutral-300 text-base sm:text-lg max-w-xl mx-auto mt-4">
+          <p className="text-neutral-200 text-base sm:text-lg max-w-xl mx-auto mt-4">
             Meet the UW-Madison students leading our mission to spread effective giving across campus.
           </p>
         </div>
