@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Official One for the World UW - Madison Website
 
-## Getting Started
+Hello! 
 
-First, run the development server:
+This is a newer version of the One for the World UW - Madison website that is built with Next.js that leverages 
+Sanity.io's integration with Next.js to allow team members to edit the content without coding experience. For those who are unfamiliar with Sanity.io,
+Sanity.io is a headless CMS (content management system). We currently do not have any backend endpoints and currently rely on external form services
+and manual event updating. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Currently, this website is still going through its DevOps stage, with CI yet to be configured. The website is 
+deployed on Vercel and currently still uses Vercel's domain. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Note that this codebase uses **pnpm** rather than npm to detect any phantom dependencies, optimized monorepo support, and disk space bloat. 
+You can still use npm if you want. 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Install pnpm if needed.
 
-## Learn More
+npm install -g pnpm
 
-To learn more about Next.js, take a look at the following resources:
+2. pnpm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. pnpm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To build, please run
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+pnpm run build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
