@@ -26,9 +26,6 @@ export default function EventsPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/70 z-10" />
 
         <div className="relative z-20 max-w-4xl mx-auto py-16">
-          <span className="text-[#2675F8] font-bold text-xs uppercase tracking-widest block mb-2">
-            Campus Community
-          </span>
           <h1 className="font-heading text-5xl sm:text-7xl uppercase tracking-wide text-white">
             CHAPTER EVENTS
           </h1>
@@ -41,9 +38,6 @@ export default function EventsPage() {
       {/* Upcoming Events Callout */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="bg-neutral-900 text-white rounded-2xl p-8 text-center border border-neutral-800 shadow-xl">
-          <span className="inline-block px-4 py-1 rounded-full bg-[#E2FF3E] text-black text-xs font-bold uppercase tracking-wider mb-4">
-            Upcoming Semester
-          </span>
           <h2 className="font-heading text-3xl sm:text-5xl uppercase tracking-wide text-white mb-3">
             STAY TUNED FOR FALL 2026!
           </h2>
@@ -57,9 +51,6 @@ export default function EventsPage() {
       {/* Past Events Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="mb-12">
-          <span className="text-[#2675F8] font-bold text-xs uppercase tracking-widest block mb-2">
-            Semester Recap
-          </span>
           <h2 className="font-heading text-4xl sm:text-6xl uppercase tracking-wide text-black">
             PAST EVENTS
           </h2>

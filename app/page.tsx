@@ -65,9 +65,6 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block px-3 py-1 bg-[#2675F8]/10 text-[#2675F8] text-xs font-bold uppercase tracking-wider rounded-md mb-4">
-                Our Core Mission
-              </div>
               <h2 className="font-heading text-4xl sm:text-6xl text-black uppercase leading-none mb-6">
                 WHAT IS THE 1% PLEDGE?
               </h2>
@@ -123,9 +120,6 @@ export default function HomePage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-neutral-50 border-t border-neutral-200">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[#2675F8] font-bold text-xs uppercase tracking-widest block mb-2">
-              Cost-Effective Giving
-            </span>
             <h2 className="font-heading text-4xl sm:text-6xl uppercase tracking-wide text-black mb-4">
               WHERE YOUR MONEY GOES
             </h2>

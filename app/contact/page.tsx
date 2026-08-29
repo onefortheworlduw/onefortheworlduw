@@ -41,9 +41,6 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60 z-10" />
 
         <div className="relative z-20 max-w-3xl mx-auto py-12">
-          <span className="text-[#2675F8] font-bold text-xs uppercase tracking-widest block mb-2">
-            Get In Touch
-          </span>
           <h1 className="font-heading text-5xl sm:text-7xl uppercase tracking-wide text-white">
             CONTACT US
           </h1>

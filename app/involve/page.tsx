@@ -27,9 +27,6 @@ export default function InvolvePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60 z-10" />
 
         <div className="relative z-20 max-w-4xl mx-auto py-16">
-          <span className="text-[#2675F8] font-bold text-xs uppercase tracking-widest block mb-2">
-            Action &amp; Impact
-          </span>
           <h1 className="font-heading text-5xl sm:text-7xl uppercase tracking-wide text-white">
             GET INVOLVED
           </h1>
@@ -42,9 +39,6 @@ export default function InvolvePage() {
       {/* Empowering Hook */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-neutral-50 border-b border-neutral-200">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-block px-3 py-1 bg-[#2675F8]/10 text-[#2675F8] text-xs font-bold uppercase tracking-wider rounded-md mb-4">
-            A Tangible Opportunity
-          </span>
           <h2 className="font-heading text-4xl sm:text-6xl uppercase tracking-wide text-black mb-4">
             HAVE YOU EVER SAVED A LIFE?
           </h2>
@@ -59,9 +53,6 @@ export default function InvolvePage() {
       {/* 4 Step Action Guide */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-[#2675F8] font-bold text-xs uppercase tracking-widest block mb-2">
-            Your Roadmap
-          </span>
           <h2 className="font-heading text-4xl sm:text-6xl uppercase tracking-wide text-black">
             HOW YOU CAN TAKE ACTION
           </h2>

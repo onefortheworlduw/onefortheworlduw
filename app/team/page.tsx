@@ -70,11 +70,11 @@ export default async function TeamPage() {
   const members =
     sanityMembers && sanityMembers.length > 0
       ? sanityMembers.map((m) => ({
-          name: m.name,
-          position: m.position,
-          image: m.image ? urlForImage(m.image)?.width(400).height(400).url() || "/images/alex.webp" : "/images/alex.webp",
-          alt: `${m.name} portrait`,
-        }))
+        name: m.name,
+        position: m.position,
+        image: m.image ? urlForImage(m.image)?.width(400).height(400).url() || "/images/alex.webp" : "/images/alex.webp",
+        alt: `${m.name} portrait`,
+      }))
       : fallbackTeamMembers;
 
   return (
@@ -95,9 +95,6 @@ export default async function TeamPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/70 z-10" />
 
         <div className="relative z-20 max-w-4xl mx-auto py-16">
-          <span className="text-[#2675F8] font-bold text-xs uppercase tracking-widest block mb-2">
-            Chapter Leadership
-          </span>
           <h1 className="font-heading text-5xl sm:text-7xl uppercase tracking-wide text-white">
             OUR TEAM
           </h1>
