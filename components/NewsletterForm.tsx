@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
-
 export default function NewsletterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,37 +18,19 @@ export default function NewsletterForm() {
     setStatus({ type: null, message: "" });
 
     try {
-      // 1. Send to Supabase
-      const { error } = await supabase
-        .from("subscribers")
-        .insert([{ name, email }]);
+      await fetch("https://api.sheetmonkey.io/form/3MzFZttDTsxDmqadYmCqwd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email }),
+        mode: "no-cors",
+      });
 
-      // 2. Also send to SheetMonkey fallback
-      try {
-        await fetch("https://api.sheetmonkey.io/form/3MzFZttDTsxDmqadYmCqwd", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email }),
-          mode: "no-cors",
-        });
-      } catch (sheetError) {
-        console.warn("SheetMonkey sync error:", sheetError);
-      }
-
-      if (error) {
-        console.error("Supabase error:", error);
-        setStatus({
-          type: "error",
-          message: "Something went wrong. Please try again.",
-        });
-      } else {
-        setStatus({
-          type: "success",
-          message: "Success! You are on the list.",
-        });
-        setName("");
-        setEmail("");
-      }
+      setStatus({
+        type: "success",
+        message: "Success! You are on the list.",
+      });
+      setName("");
+      setEmail("");
     } catch (err) {
       console.error("Submission failed:", err);
       setStatus({
