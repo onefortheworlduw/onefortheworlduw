@@ -1,7 +1,71 @@
 import Link from "next/link";
 import Image from "next/image";
+import { sanityFetch } from "@/sanity/lib/live";
+import { CHARITIES_QUERY } from "@/sanity/lib/queries";
 
-export default function HomePage() {
+const fallbackCharities = [
+  {
+    _id: "charity-malaria-consortium",
+    name: "Malaria Consortium (SMC Program)",
+    statBadge: "$7 per treatment",
+    category: "Malaria Prevention",
+    description:
+      "Distributes preventive antimalarial medications to children aged 3–59 months during peak transmission season to prevent severe illness and death.",
+    link: "https://www.malariaconsortium.org/implementation/seasonal-malaria-chemoprevention-smc",
+  },
+  {
+    _id: "charity-new-incentives",
+    name: "New Incentives",
+    statBadge: "~$17 per child vaccinated",
+    category: "Immunization",
+    description:
+      "Increases routine childhood vaccination rates through conditional cash transfers, raising public awareness and reducing lethal vaccine stockouts.",
+    link: "https://www.newincentives.org/",
+  },
+  {
+    _id: "charity-helen-keller-intl",
+    name: "Helen Keller International (Vitamin A)",
+    statBadge: "$1 per supplement",
+    category: "Blindness Prevention",
+    description:
+      "Prevents childhood blindness and mortality in impoverished regions through cost-effective Vitamin A supplementation.",
+    link: "https://helenkellerintl.org/combatting-vitamin-a-deficiencies/",
+  },
+  {
+    _id: "charity-against-malaria-foundation",
+    name: "Against Malaria Foundation (AMF)",
+    statBadge: "$2 per bed net",
+    category: "Vector Control",
+    description:
+      "Funds, distributes, and monitors long-lasting insecticidal nets to protect vulnerable families against malaria-carrying mosquitoes.",
+    link: "https://www.againstmalaria.com/",
+  },
+];
+
+interface SanityCharity {
+  _id: string;
+  name: string;
+  statBadge: string;
+  category: string;
+  description: string;
+  link: string;
+  order?: number;
+}
+
+export default async function HomePage() {
+  let sanityCharities: SanityCharity[] = [];
+  try {
+    const { data } = await sanityFetch({ query: CHARITIES_QUERY });
+    if (Array.isArray(data) && data.length > 0) {
+      sanityCharities = data as SanityCharity[];
+    }
+  } catch (error) {
+    console.warn("Failed to fetch charities from Sanity:", error);
+  }
+
+  const charities =
+    sanityCharities && sanityCharities.length > 0 ? sanityCharities : fallbackCharities;
+
   return (
     <div>
       {/* Hero Section */}
@@ -129,117 +193,33 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Charity 1 */}
-            <div className="brand-card flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-                  <span className="px-3 py-1 bg-[#E2FF3E] text-black text-xs font-bold rounded-full whitespace-nowrap flex-shrink-0">
-                    $7 per treatment
-                  </span>
-                  <span className="text-xs font-bold text-[#2675F8] uppercase tracking-wider whitespace-nowrap">
-                    Malaria Prevention
-                  </span>
+            {charities.map((charity) => (
+              <div key={charity._id} className="brand-card flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+                    <span className="px-3 py-1 bg-[#E2FF3E] text-black text-xs font-bold rounded-full whitespace-nowrap flex-shrink-0">
+                      {charity.statBadge}
+                    </span>
+                    <span className="text-xs font-bold text-[#2675F8] uppercase tracking-wider whitespace-nowrap">
+                      {charity.category}
+                    </span>
+                  </div>
+                  <h3 className="font-heading text-2xl uppercase mb-3 text-black">
+                    <a
+                      href={charity.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#2675F8] transition-colors"
+                    >
+                      {charity.name}
+                    </a>
+                  </h3>
+                  <p className="text-neutral-600 text-sm leading-relaxed">
+                    {charity.description}
+                  </p>
                 </div>
-                <h3 className="font-heading text-2xl uppercase mb-3 text-black">
-                  <a
-                    href="https://www.malariaconsortium.org/implementation/seasonal-malaria-chemoprevention-smc"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#2675F8] transition-colors"
-                  >
-                    Malaria Consortium (SMC Program)
-                  </a>
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  Distributes preventive antimalarial medications to children aged 3–59 months
-                  during peak transmission season to prevent severe illness and death.
-                </p>
               </div>
-            </div>
-
-            {/* Charity 2 */}
-            <div className="brand-card flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-                  <span className="px-3 py-1 bg-[#E2FF3E] text-black text-xs font-bold rounded-full whitespace-nowrap flex-shrink-0">
-                    ~$17 per child vaccinated
-                  </span>
-                  <span className="text-xs font-bold text-[#2675F8] uppercase tracking-wider whitespace-nowrap">
-                    Immunization
-                  </span>
-                </div>
-                <h3 className="font-heading text-2xl uppercase mb-3 text-black">
-                  <a
-                    href="https://www.newincentives.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#2675F8] transition-colors"
-                  >
-                    New Incentives
-                  </a>
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  Increases routine childhood vaccination rates through conditional cash transfers,
-                  raising public awareness and reducing lethal vaccine stockouts.
-                </p>
-              </div>
-            </div>
-
-            {/* Charity 3 */}
-            <div className="brand-card flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-                  <span className="px-3 py-1 bg-[#E2FF3E] text-black text-xs font-bold rounded-full whitespace-nowrap flex-shrink-0">
-                    $1 per supplement
-                  </span>
-                  <span className="text-xs font-bold text-[#2675F8] uppercase tracking-wider whitespace-nowrap">
-                    Blindness Prevention
-                  </span>
-                </div>
-                <h3 className="font-heading text-2xl uppercase mb-3 text-black">
-                  <a
-                    href="https://helenkellerintl.org/combatting-vitamin-a-deficiencies/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#2675F8] transition-colors"
-                  >
-                    Helen Keller International (Vitamin A)
-                  </a>
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  Prevents childhood blindness and mortality in impoverished regions through
-                  cost-effective Vitamin A supplementation.
-                </p>
-              </div>
-            </div>
-
-            {/* Charity 4 */}
-            <div className="brand-card flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-                  <span className="px-3 py-1 bg-[#E2FF3E] text-black text-xs font-bold rounded-full whitespace-nowrap flex-shrink-0">
-                    $2 per bed net
-                  </span>
-                  <span className="text-xs font-bold text-[#2675F8] uppercase tracking-wider whitespace-nowrap">
-                    Vector Control
-                  </span>
-                </div>
-                <h3 className="font-heading text-2xl uppercase mb-3 text-black">
-                  <a
-                    href="https://www.againstmalaria.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#2675F8] transition-colors"
-                  >
-                    Against Malaria Foundation (AMF)
-                  </a>
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  Funds, distributes, and monitors long-lasting insecticidal nets to protect
-                  vulnerable families against malaria-carrying mosquitoes.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

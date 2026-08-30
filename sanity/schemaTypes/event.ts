@@ -35,7 +35,9 @@ export const event = defineType({
     }),
     defineField({
       name: 'isUpcoming',
-      title: 'Is this an upcoming event?',
+      title: 'Current / Upcoming Event?',
+      description:
+        'Toggle ON to show this in the Current Events section on the website. Toggle OFF for Past Events.',
       type: 'boolean',
       initialValue: false,
     }),

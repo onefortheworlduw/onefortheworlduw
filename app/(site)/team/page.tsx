@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { urlForImage } from "@/sanity/lib/image";
 import { TEAM_MEMBERS_QUERY } from "@/sanity/lib/queries";
 
@@ -9,8 +9,6 @@ export const metadata: Metadata = {
   description:
     "Meet the student leaders driving high-impact philanthropy at UW-Madison.",
 };
-
-export const revalidate = 60; // revalidate every 60 seconds
 
 const fallbackTeamMembers = [
   {
@@ -62,10 +60,14 @@ interface SanityTeamMember {
 export default async function TeamPage() {
   let sanityMembers: SanityTeamMember[] = [];
   try {
-    sanityMembers = await client.fetch(TEAM_MEMBERS_QUERY);
+    const { data } = await sanityFetch({ query: TEAM_MEMBERS_QUERY });
+    if (Array.isArray(data)) {
+      sanityMembers = data as SanityTeamMember[];
+    }
   } catch (error) {
     console.warn("Failed to fetch from Sanity, using fallback team data:", error);
   }
+
 
   const members =
     sanityMembers && sanityMembers.length > 0
@@ -76,6 +78,7 @@ export default async function TeamPage() {
         alt: `${m.name} portrait`,
       }))
       : fallbackTeamMembers;
+
 
   return (
     <div className="bg-white min-h-screen">

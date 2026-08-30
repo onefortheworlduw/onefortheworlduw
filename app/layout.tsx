@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Bebas_Neue } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
-// Font optimization with zero CLS (Cumulative Layout Shift)
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -78,9 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${bebasNeue.variable}`}>
       <body className="min-h-screen flex flex-col font-sans bg-white text-black antialiased selection:bg-[#E2FF3E] selection:text-black">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

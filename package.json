@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:ndjson": "node scripts/generate-ndjson.mjs",
+    "import:data": "node scripts/generate-ndjson.mjs && sanity dataset import content-import.ndjson --dataset production --replace"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",
