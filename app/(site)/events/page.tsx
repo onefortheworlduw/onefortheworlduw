@@ -63,7 +63,7 @@ export default async function EventsPage() {
       </section>
 
       {/* Current Events Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="mb-8">
           <div className="flex items-center gap-3">
             <span className="w-3 h-3 rounded-full bg-[#E2FF3E] animate-pulse" />
@@ -74,42 +74,48 @@ export default async function EventsPage() {
         </div>
 
         {currentEvents.length > 0 ? (
-          <div className="space-y-8">
+          <div className="space-y-6">
             {currentEvents.map((e) => (
-              <div key={e._id} className="brand-card border-2 border-[#2675F8]/30 shadow-lg">
-                <div className="flex flex-col lg:flex-row gap-8 items-center">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2 flex-wrap">
-                      <span className="px-3 py-1 bg-[#2675F8] text-white text-xs font-bold rounded-md">
+              <div
+                key={e._id}
+                className="brand-card border-2 border-[#2675F8]/30 shadow-md hover:border-[#2675F8] transition-all p-6 sm:p-8"
+              >
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start lg:items-center justify-between w-full">
+                  <div className="flex-1 w-full text-left">
+                    <div className="flex items-center gap-2.5 mb-3 flex-wrap justify-start">
+                      <span className="px-3 py-1 bg-[#2675F8] text-white text-xs font-bold rounded-md whitespace-nowrap">
                         {e.date}
                       </span>
                       {e.location && (
-                        <span className="text-xs font-semibold text-neutral-600 bg-neutral-100 px-3 py-1 rounded-md">
+                        <span className="text-xs font-semibold text-neutral-700 bg-neutral-100 px-3 py-1 rounded-md whitespace-nowrap">
                           📍 {e.location}
                         </span>
                       )}
                     </div>
-                    <h3 className="font-heading text-3xl uppercase tracking-wide text-black mb-4">
+                    <h3 className="font-heading text-2xl sm:text-3xl uppercase tracking-wide text-black mb-2 text-left">
                       {e.title}
                     </h3>
                     {e.description && (
-                      <p className="text-neutral-700 text-base leading-relaxed whitespace-pre-line">
+                      <p className="text-neutral-700 text-sm sm:text-base leading-relaxed text-left whitespace-pre-line">
                         {e.description}
                       </p>
                     )}
                   </div>
                   {e.images && e.images.length > 0 && (
-                    <div className="flex gap-4 w-full lg:w-auto justify-center flex-wrap sm:flex-nowrap">
+                    <div className="flex gap-3 w-full lg:w-auto justify-start flex-wrap sm:flex-nowrap pt-2 lg:pt-0">
                       {e.images.slice(0, 2).map((img, i) => {
                         const imgUrl = urlForImage(img)?.width(400).height(400).url();
                         if (!imgUrl) return null;
                         return (
-                          <div key={img._key || i} className="relative w-48 h-48 rounded-xl overflow-hidden shadow-md">
+                          <div
+                            key={img._key || i}
+                            className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-xl overflow-hidden shadow-md flex-shrink-0"
+                          >
                             <Image
                               src={imgUrl}
                               alt={`${e.title} photo ${i + 1}`}
                               fill
-                              sizes="(max-width: 640px) 100vw, 192px"
+                              sizes="(max-width: 640px) 144px, 176px"
                               quality={80}
                               className="object-cover"
                             />
@@ -135,50 +141,53 @@ export default async function EventsPage() {
       <div className="max-w-5xl mx-auto border-t border-neutral-200" />
 
       {/* Past Events Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="mb-12">
           <h2 className="font-heading text-4xl sm:text-6xl uppercase tracking-wide text-black">
             PAST EVENTS
           </h2>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-12">
           {/* Featured Large Events with Images */}
           {pastEvents
             .filter((e) => e.images && e.images.length > 0)
             .map((e) => (
-              <div key={e._id} className="brand-card">
-                <div className="flex flex-col lg:flex-row gap-8 items-center">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2 flex-wrap">
-                      <span className="px-3 py-1 bg-neutral-100 text-neutral-800 text-xs font-bold rounded-md">
+              <div key={e._id} className="brand-card p-6 sm:p-8">
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start lg:items-center justify-between w-full">
+                  <div className="flex-1 w-full text-left">
+                    <div className="flex items-center gap-2.5 mb-3 flex-wrap justify-start">
+                      <span className="px-3 py-1 bg-neutral-100 text-neutral-800 text-xs font-bold rounded-md whitespace-nowrap">
                         {e.date}
                       </span>
                       {e.location && (
-                        <span className="text-xs font-semibold text-neutral-500">
-                          Location: {e.location}
+                        <span className="text-xs font-semibold text-neutral-500 whitespace-nowrap">
+                          📍 {e.location}
                         </span>
                       )}
                     </div>
-                    <h3 className="font-heading text-3xl uppercase tracking-wide text-black mb-4">
+                    <h3 className="font-heading text-2xl sm:text-3xl uppercase tracking-wide text-black mb-3 text-left">
                       {e.title}
                     </h3>
-                    <p className="text-neutral-700 text-base leading-relaxed mb-4 whitespace-pre-line">
+                    <p className="text-neutral-700 text-sm sm:text-base leading-relaxed mb-4 text-left whitespace-pre-line">
                       {e.description}
                     </p>
                   </div>
                   {e.images && e.images.length > 0 && (
-                    <div className="flex gap-4 w-full lg:w-auto justify-center flex-wrap sm:flex-nowrap">
+                    <div className="flex gap-3 w-full lg:w-auto justify-start flex-wrap sm:flex-nowrap pt-2 lg:pt-0">
                       {e.images.slice(0, 2).map((img, i) => {
                         const imgUrl = urlForImage(img)?.width(400).height(400).url();
                         if (!imgUrl) return null;
                         return (
-                          <div key={img._key || i} className="relative w-48 h-48 rounded-xl overflow-hidden shadow-md">
+                          <div
+                            key={img._key || i}
+                            className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-xl overflow-hidden shadow-md flex-shrink-0"
+                          >
                             <Image
                               src={imgUrl}
                               alt={`${e.title} photo ${i + 1}`}
                               fill
-                              sizes="(max-width: 640px) 100vw, 192px"
+                              sizes="(max-width: 640px) 144px, 176px"
                               quality={80}
                               className="object-cover"
                             />
@@ -196,10 +205,10 @@ export default async function EventsPage() {
             {pastEvents
               .filter((e) => !e.images || e.images.length === 0)
               .map((e) => (
-                <div key={e._id} className="p-6 bg-neutral-50 border border-neutral-200 rounded-xl">
+                <div key={e._id} className="p-6 bg-neutral-50 border border-neutral-200 rounded-xl text-left">
                   <span className="text-xs font-bold text-[#2675F8] block mb-1">{e.date}</span>
                   <h4 className="font-heading text-2xl uppercase text-black mb-2">{e.title}</h4>
-                  {e.location && <p className="text-xs text-neutral-500 mb-2">{e.location}</p>}
+                  {e.location && <p className="text-xs text-neutral-500 mb-2">📍 {e.location}</p>}
                   <p className="text-sm text-neutral-600 leading-relaxed">{e.description}</p>
                 </div>
               ))}
