@@ -21,6 +21,48 @@ interface SanityEvent {
   order?: number;
 }
 
+function parseEventDate(dateStr?: string): number {
+  if (!dateStr) return Infinity;
+
+  // Match M/D/YY, MM/DD/YY, M/D/YYYY, MM/DD/YYYY
+  const mdyMatch = dateStr.match(/\b(\d{1,2})\/(\d{1,2})\/(\d{2,4})\b/);
+  if (mdyMatch) {
+    const month = parseInt(mdyMatch[1], 10) - 1;
+    const day = parseInt(mdyMatch[2], 10);
+    let year = parseInt(mdyMatch[3], 10);
+    if (year < 100) {
+      year += 2000;
+    }
+    const d = new Date(year, month, day);
+    if (!isNaN(d.getTime())) return d.getTime();
+  }
+
+  // Match YYYY-MM-DD
+  const ymdMatch = dateStr.match(/\b(\d{4})[-/](\d{1,2})[-/](\d{1,2})\b/);
+  if (ymdMatch) {
+    const year = parseInt(ymdMatch[1], 10);
+    const month = parseInt(ymdMatch[2], 10) - 1;
+    const day = parseInt(ymdMatch[3], 10);
+    const d = new Date(year, month, day);
+    if (!isNaN(d.getTime())) return d.getTime();
+  }
+
+  // Match text dates like "November 3, 2026" or "Nov 3, 2026"
+  const textDateMatch = dateStr.match(
+    /\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s*(\d{2,4})?\b/i
+  );
+  if (textDateMatch) {
+    const parsed = Date.parse(textDateMatch[0]);
+    if (!isNaN(parsed)) return parsed;
+  }
+
+  const cleaned = dateStr.replace(/(Time TBD|TBD|•.*|[-–].*)/i, "").trim();
+  const parsed = Date.parse(cleaned);
+  if (!isNaN(parsed)) return parsed;
+
+  return Infinity;
+}
+
 export default async function EventsPage() {
   let events: SanityEvent[] = [];
   try {
@@ -32,7 +74,16 @@ export default async function EventsPage() {
     console.warn("Failed to fetch events from Sanity:", error);
   }
 
-  const currentEvents = events.filter((e) => e.isUpcoming);
+  const currentEvents = events
+    .filter((e) => e.isUpcoming)
+    .sort((a, b) => {
+      const dateA = parseEventDate(a.date);
+      const dateB = parseEventDate(b.date);
+      if (dateA !== dateB) {
+        return dateA - dateB;
+      }
+      return (a.order ?? 0) - (b.order ?? 0);
+    });
   const pastEvents = events.filter((e) => !e.isUpcoming);
 
   return (
@@ -65,12 +116,9 @@ export default async function EventsPage() {
       {/* Current Events Section */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="mb-8">
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#E2FF3E] animate-pulse" />
-            <h2 className="font-heading text-4xl sm:text-6xl uppercase tracking-wide text-black">
-              CURRENT EVENTS
-            </h2>
-          </div>
+          <h2 className="font-heading text-4xl sm:text-6xl uppercase tracking-wide text-black">
+            CURRENT EVENTS
+          </h2>
         </div>
 
         {currentEvents.length > 0 ? (
