@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { sanityFetch } from "@/sanity/lib/live";
-import { urlForImage } from "@/sanity/lib/image";
+import { getSafeImageUrl } from "@/sanity/lib/image";
 import { TEAM_MEMBERS_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
@@ -74,7 +74,7 @@ export default async function TeamPage() {
       ? sanityMembers.map((m) => ({
         name: m.name,
         position: m.position,
-        image: m.image ? urlForImage(m.image)?.width(400).height(400).url() || "/images/alex.webp" : "/images/alex.webp",
+        image: (m.image && getSafeImageUrl(m.image, 400, 400)) || "/images/alex.webp",
         alt: `${m.name} portrait`,
       }))
       : fallbackTeamMembers;

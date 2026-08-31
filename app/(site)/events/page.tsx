@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { sanityFetch } from "@/sanity/lib/live";
-import { urlForImage } from "@/sanity/lib/image";
+import { getSafeImageUrl } from "@/sanity/lib/image";
 import { EVENTS_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
@@ -104,7 +104,7 @@ export default async function EventsPage() {
                   {e.images && e.images.length > 0 && (
                     <div className="flex gap-3 w-full lg:w-auto justify-start flex-wrap sm:flex-nowrap pt-2 lg:pt-0">
                       {e.images.slice(0, 2).map((img, i) => {
-                        const imgUrl = urlForImage(img)?.width(400).height(400).url();
+                        const imgUrl = getSafeImageUrl(img, 400, 400);
                         if (!imgUrl) return null;
                         return (
                           <div
@@ -176,7 +176,7 @@ export default async function EventsPage() {
                   {e.images && e.images.length > 0 && (
                     <div className="flex gap-3 w-full lg:w-auto justify-start flex-wrap sm:flex-nowrap pt-2 lg:pt-0">
                       {e.images.slice(0, 2).map((img, i) => {
-                        const imgUrl = urlForImage(img)?.width(400).height(400).url();
+                        const imgUrl = getSafeImageUrl(img, 400, 400);
                         if (!imgUrl) return null;
                         return (
                           <div
