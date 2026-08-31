@@ -30,6 +30,7 @@ export const event = defineType({
     defineField({
       name: 'images',
       title: 'Event Photos',
+      description: 'Add only .jpg, .png, or .webp. Other files do not work',
       type: 'array',
       of: [{ type: 'image', options: { hotspot: true } }],
     }),
