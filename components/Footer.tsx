@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import NewsletterForm from "./NewsletterForm";
 
 function GlobeIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -191,13 +190,15 @@ export default function Footer() {
             <p className="text-neutral-400 text-sm mb-4">
               Get meeting reminders, event updates, and news on our chapter&apos;s impact.
             </p>
-            <NewsletterForm />
+            <a
+              href="https://forms.gle/xBHe5JDW9qnTGEoa9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center py-3 rounded-full text-base font-bold bg-[#E2FF3E] text-black border border-black/10 shadow-sm"
+            >
+              Sign Up
+            </a>
           </div>
-        </div>
-
-        {/* Footer Bottom */}
-        <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400 gap-4">
-          <p>© {new Date().getFullYear()} One for the World UW-Madison.</p>
         </div>
       </div>
     </footer>
