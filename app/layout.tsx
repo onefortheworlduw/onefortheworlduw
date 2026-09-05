@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Bebas_Neue } from "next/font/google";
+import JsonLd from "@/components/JsonLd";
 import "./globals.css";
 
 const inter = Inter({
@@ -30,9 +31,42 @@ const bebasNeue = Bebas_Neue({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://onefortheworlduw.github.io"),
-  title: "One For The World UW-Madison",
+  title: {
+    default: "One For The World UW-Madison | High-Impact Giving & Philanthropy",
+    template: "%s | One For The World UW-Madison",
+  },
   description:
-    "Join One for the World at UW-Madison! We educate students on effective global aid and the 1% pledge while building a community of future leaders.",
+    "Join One for the World at UW-Madison! We educate students on effective global aid and the 1% pledge while building a community of future leaders fighting extreme poverty.",
+  keywords: [
+    "One for the World",
+    "One for the World UW-Madison",
+    "OFTW UW",
+    "UW Madison student organizations",
+    "UW Madison clubs",
+    "effective altruism UW Madison",
+    "effective giving",
+    "1% pledge",
+    "GiveWell student chapter",
+    "high-impact philanthropy",
+    "global health donations",
+    "Malaria Consortium",
+    "Against Malaria Foundation",
+    "New Incentives",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -43,9 +77,9 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "One For The World UW-Madison",
+    title: "One For The World UW-Madison | High-Impact Giving & Philanthropy",
     description:
-      "Join One for the World at UW-Madison! We educate students on effective global aid and the 1% pledge while building a community of future leaders.",
+      "Join One for the World at UW-Madison! We educate students on effective global aid and the 1% pledge while building a community of future leaders fighting extreme poverty.",
     url: "https://onefortheworlduw.github.io/",
     siteName: "One For The World UW-Madison",
     images: [
@@ -60,9 +94,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "One For The World UW-Madison",
+    title: "One For The World UW-Madison | High-Impact Giving & Philanthropy",
     description:
-      "Join One for the World at UW-Madison! We educate students on effective global aid and the 1% pledge while building a community of future leaders.",
+      "Join One for the World at UW-Madison! We educate students on effective global aid and the 1% pledge while building a community of future leaders fighting extreme poverty.",
     images: ["/images/og-image.png"],
   },
 };
@@ -74,6 +108,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${bebasNeue.variable}`}>
+      <head>
+        <JsonLd />
+      </head>
       <body className="min-h-screen flex flex-col font-sans bg-white text-black antialiased selection:bg-[#E2FF3E] selection:text-black">
         {children}
       </body>

@@ -1,11 +1,26 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Get Involved | One For The World UW-Madison",
+  title: "Get Involved",
   description:
-    "Join One for the World at UW-Madison and learn how you can make a tangible difference through effective giving.",
+    "Join One for the World at UW-Madison! Take the 1% pledge, calculate your lifetime impact, explore top-rated charities, and become a student member.",
+  alternates: {
+    canonical: "/involve",
+  },
+  keywords: [
+    "Get involved One for the World",
+    "1% pledge sign up",
+    "UW Madison student charity club",
+    "GiveWell impact calculator",
+    "student philanthropy Wisconsin",
+  ],
+  openGraph: {
+    title: "Get Involved | One For The World UW-Madison",
+    description:
+      "Join One for the World at UW-Madison! Take the 1% pledge, calculate your impact, and become a student leader.",
+    url: "https://onefortheworlduw.github.io/involve",
+  },
 };
 
 export default function InvolvePage() {

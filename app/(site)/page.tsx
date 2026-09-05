@@ -1,7 +1,31 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { CHARITIES_QUERY } from "@/sanity/lib/queries";
+
+export const metadata: Metadata = {
+  title: "Fighting Extreme Poverty Through Effective Giving",
+  description:
+    "Join One for the World at UW-Madison! We educate students on evidence-based global aid and empower Badgers to take the 1% pledge for top-tier charities.",
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "One for the World UW",
+    "One for the World Madison",
+    "1% pledge UW-Madison",
+    "effective philanthropy UW",
+    "GiveWell student club Madison",
+    "effective giving Wisconsin",
+  ],
+  openGraph: {
+    title: "One For The World UW-Madison | High-Impact Giving & Philanthropy",
+    description:
+      "We educate students on evidence-based global aid and empower them to take the 1% pledge while building a community of future leaders.",
+    url: "https://onefortheworlduw.github.io/",
+  },
+};
 
 const fallbackCharities = [
   {

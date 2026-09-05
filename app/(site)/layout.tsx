@@ -1,8 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import VisualEditingOverlay from "@/components/VisualEditing";
+import dynamic from "next/dynamic";
 import { SanityLive } from "@/sanity/lib/live";
 import { draftMode } from "next/headers";
+
+const VisualEditingOverlay = dynamic(
+  () => import("@/components/VisualEditing")
+);
 
 export default async function SiteLayout({
   children,

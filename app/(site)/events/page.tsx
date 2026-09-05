@@ -5,9 +5,25 @@ import { getSafeImageUrl } from "@/sanity/lib/image";
 import { EVENTS_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
-  title: "Events | One For The World UW-Madison",
+  title: "Events",
   description:
-    "Check out current and past events with One for the World at UW-Madison!",
+    "Explore upcoming giving games, tabling events, speaker panels, and past activities with One for the World at UW-Madison.",
+  alternates: {
+    canonical: "/events",
+  },
+  keywords: [
+    "One for the World events",
+    "UW Madison philanthropy events",
+    "UW Madison giving games",
+    "OFTW UW meetings",
+    "effective altruism campus events",
+  ],
+  openGraph: {
+    title: "Events | One For The World UW-Madison",
+    description:
+      "Explore upcoming giving games, tabling, and speaker events with One for the World at UW-Madison.",
+    url: "https://onefortheworlduw.github.io/events",
+  },
 };
 
 interface SanityEvent {

@@ -5,9 +5,26 @@ import { getSafeImageUrl } from "@/sanity/lib/image";
 import { TEAM_MEMBERS_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
-  title: "Our Team | One For The World UW-Madison",
+  title: "Our Team",
   description:
-    "Meet the student leaders driving high-impact philanthropy at UW-Madison.",
+    "Meet the UW-Madison student leaders driving high-impact philanthropy, effective giving education, and the 1% pledge on campus.",
+  alternates: {
+    canonical: "/team",
+  },
+  keywords: [
+    "One for the World UW team",
+    "UW Madison student leadership",
+    "Alexandra Wienkes UW",
+    "Maya Guerriero UW",
+    "OFTW UW officers",
+    "UW Madison philanthropy leaders",
+  ],
+  openGraph: {
+    title: "Our Team | One For The World UW-Madison",
+    description:
+      "Meet the UW-Madison student leaders driving high-impact philanthropy and effective giving on campus.",
+    url: "https://onefortheworlduw.github.io/team",
+  },
 };
 
 const fallbackTeamMembers = [

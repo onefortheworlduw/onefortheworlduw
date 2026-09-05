@@ -104,7 +104,7 @@
 .Hero__section {
   min-height: 55vh;
   width: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("/images/homepage image.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("/images/homepage-image.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
