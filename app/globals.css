@@ -21,6 +21,8 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   h1,
@@ -151,8 +153,16 @@
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 16px;
-  padding: 30px;
+  padding: 1.25rem;
   transition: all 0.3s ease;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .brand-card {
+    padding: 2rem;
+  }
 }
 
 .brand-card:hover {

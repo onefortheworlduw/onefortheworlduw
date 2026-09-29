@@ -30,9 +30,9 @@ export default function Navbar() {
         <Link
           href="/"
           onClick={closeMenu}
-          className="flex items-center gap-3 group text-black no-underline"
+          className="flex items-center gap-2.5 sm:gap-3 group text-black no-underline min-w-0"
         >
-          <div className="relative w-11 h-11 flex-shrink-0 rounded-lg overflow-hidden">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 flex-shrink-0 rounded-lg overflow-hidden">
             <Image
               src="/images/primary-logo.webp"
               alt="One for the World Logo"
@@ -42,11 +42,11 @@ export default function Navbar() {
               priority
             />
           </div>
-          <div className="flex flex-col">
-            <span className="font-heading text-2xl sm:text-3xl tracking-tight leading-none text-black">
+          <div className="flex flex-col min-w-0">
+            <span className="font-heading text-xl sm:text-2xl md:text-3xl tracking-tight leading-none text-black truncate">
               ONE FOR THE WORLD
             </span>
-            <span className="text-[11px] font-bold tracking-widest text-[#2675F8] uppercase">
+            <span className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#2675F8] uppercase">
               UW-Madison Chapter
             </span>
           </div>
