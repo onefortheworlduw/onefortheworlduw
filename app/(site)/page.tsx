@@ -4,6 +4,8 @@ import Image from "next/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { CHARITIES_QUERY } from "@/sanity/lib/queries";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Fighting Extreme Poverty Through Effective Giving",
   description:
